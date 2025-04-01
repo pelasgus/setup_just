@@ -17,6 +17,6 @@ pkgs.mkShell {
   buildInputs = packages;
 
   shellHook = ''
-    export PKG_CONFIG_PATH="${pkgs.glib}/lib/pkgconfig:$PKG_CONFIG_PATH"
+    export PATH="${pkgs.just}/bin:$PATH"  # Ensure just is in the PATH  
   '';
 }
