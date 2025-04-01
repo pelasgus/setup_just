@@ -1,0 +1,36 @@
+name: Test setup_just Action
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Just using the setup_just action from the pelasgus repo
+      - name: Set up Just environment
+        uses: pelasgus/setup_just@main
+        with:
+          set-default: "true"  
+
+      # Verify Just is installed
+      - name: Check if Just is installed
+        run: |
+          just --version
+          echo "Just version installed successfully."
+
+      # Optionally, run a simple Just task to ensure it's working
+      - name: Run a Just task (Optional)
+        run: |
+          just --tasks
+          echo "Successfully listed tasks in Just."
