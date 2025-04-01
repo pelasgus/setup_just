@@ -9,6 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install nix and then dependencies
+      shell: bash   
     - uses: actions/checkout@v4
     - uses: cachix/install-nix-action@v31
       with:
